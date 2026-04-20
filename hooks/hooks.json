@@ -1,0 +1,17 @@
+{
+  "description": "Token saver hooks: check claude.md size and hook errors on session start",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash $CLAUDE_PLUGIN_ROOT/hooks/scripts/session-start.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
