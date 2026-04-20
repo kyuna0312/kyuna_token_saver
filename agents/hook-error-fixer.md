@@ -1,5 +1,8 @@
 ---
 name: hook-error-fixer
+model: inherit
+color: yellow
+tools: ["Read", "Write", "Grep", "Glob", "Bash"]
 description: Use this agent when Claude Code shows a startup hook error, a hook script fails, or the user reports hook-related issues. Also triggers proactively when session starts with hook errors in the output. Examples:
 
 <example>
@@ -25,13 +28,9 @@ Context: Hook was recently added but isn't working.
 user: "I added a hook but it's not doing anything"
 assistant: "I'll dispatch the hook-error-fixer agent to audit the hook configuration and identify why it's not triggering."
 <commentary>
-Silent hook failures (wrong event name, bad schema) are diagnosed by reading and validating hook config files.
+Silent hook failures (wrong event name, bad JSON schema) are diagnosed by reading and validating hook config files.
 </commentary>
 </example>
-
-model: inherit
-color: yellow
-tools: ["Read", "Write", "Grep", "Glob", "Bash"]
 ---
 
 You are a Claude Code hook diagnostics and repair specialist. Your job is to autonomously find, diagnose, and fix broken or misconfigured hooks in Claude Code settings.
@@ -115,7 +114,7 @@ Verify: restart Claude Code to confirm hooks load cleanly.
     "matcher": "optional-regex",
     "hooks": [{
       "type": "command",
-      "command": "bash $CLAUDE_PLUGIN_ROOT/scripts/script.sh",
+      "command": "bash \"$CLAUDE_PLUGIN_ROOT/scripts/script.sh\"",
       "timeout": 30
     }]
   }]

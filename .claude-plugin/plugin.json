@@ -1,5 +1,5 @@
 {
-  "name": "kyuna_token_saver",
+  "name": "kyuna-token-saver",
   "version": "1.0.0",
   "description": "Reduce Claude Code token usage via context reset, settings optimization, skill management, and hook diagnostics",
   "author": {
